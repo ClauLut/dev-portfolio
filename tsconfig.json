@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "module": "node16",
+    "composite": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "sourceRoot": "/src",
+    "inlineSources": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "target": "esnext",
+    "moduleResolution": "node16",
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true
+  },
+  "compileOnSave": false,
+  "include": [
+    "src/**/*"
+, "global.d.ts"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
