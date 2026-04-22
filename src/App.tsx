@@ -6,8 +6,7 @@ import Button from "./components/Button";
 import Avatar from "./images/avatar.png";
 import LinkedIn from "./icons/linkedin.svg";
 import ProjectCard from "./components/ProjectCard";
-
-const projects = [];
+import { projects } from "./Projects";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -120,30 +119,74 @@ export default function App() {
       {/* ABOUT */}
       <section id="about">
         <h3> About </h3>
+
         <p>
           I’m a frontend developer focused on modern web technologies with a
           strong passion for UI/UX design. I enjoy turning ideas into intuitive,
           performant, and visually engaging interfaces that provide real value
-          to users. <br /> With a balance of technical expertise and design
-          sensitivity, I work across both development and design processes to
-          create seamless, user-centered experiences. I care about clean code,
-          thoughtful interactions, and building products that are not only
-          functional but also enjoyable to use. <br /> I’m always open to
-          collaborating on meaningful projects, exploring new technologies, and
-          continuously improving my craft.
+          to users.
         </p>
+        <p>
+          With a balance of technical expertise and design sensitivity, I work
+          across both development and design processes to create seamless,
+          user-centered experiences. I care about clean code, thoughtful
+          interactions, and building products that are not only functional but
+          also enjoyable to use.
+        </p>
+        <p>
+          I’m always open to collaborating on meaningful projects, exploring new
+          technologies, and continuously improving my craft.
+        </p>
+      </section>
+
+      {/* PROJECTS */}
+      <section id="projects">
+        <h3>Projects </h3>
+        <div className="projects">
+          {projects.map((project, i) => (
+            <ProjectCard index={i} project={project} />
+          ))}
+        </div>
       </section>
 
       {/* SKILLS */}
       <section className="skills">
         <h3>Skills </h3>
-        {["JavaScript", "TypeScript", "React", "Adobe XD", "Figma"].map(
+        <h4>Frontend Development</h4>
+        {[
+          "HTML",
+          "CSS",
+          "SASS",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "API Integration",
+        ].map((skill, i) => (
+          <motion.span key={i} whileHover={{ scale: 1.1 }}>
+            {skill}
+          </motion.span>
+        ))}
+        <h4>UI/UX & Design</h4>
+        {["Figma", "AdobeXD", "Wireframing", "Prototyping", "User Flows"].map(
           (skill, i) => (
             <motion.span key={i} whileHover={{ scale: 1.1 }}>
               {skill}
             </motion.span>
           ),
         )}
+        <h4>Tools & Workflow</h4>
+        {[
+          "Git",
+          "GitHub",
+          "Webpack",
+          "Node.js",
+          "Docker",
+          "AI-Assisted Development",
+        ].map((skill, i) => (
+          <motion.span key={i} whileHover={{ scale: 1.1 }}>
+            {skill}
+          </motion.span>
+        ))}
       </section>
 
       {/* CONTACT */}
@@ -175,7 +218,6 @@ export default function App() {
               LinkedIn
             </a>
           </div>
-
           <Button onClick={() => scrollTo("home")} icon={<ArrowUp />} />
         </div>
       </motion.section>
