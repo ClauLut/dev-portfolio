@@ -98,7 +98,12 @@ export default function App() {
               development and thoughtful design.
             </p>
           </div>
-          <img
+          <motion.img
+            whileHover={{
+              x: [0, -6, 6, -4, 4, 0],
+              rotate: [0, -2, 2, -1, 1, 0],
+              transition: { duration: 0.5 },
+            }}
             src={Avatar}
             alt="avatar"
             width={300}

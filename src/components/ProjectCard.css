@@ -5,6 +5,8 @@
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   transition: 0.3s;
+  min-height: 300px;
+  height: fit-content;
 }
 
 .card:hover {
