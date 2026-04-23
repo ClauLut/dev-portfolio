@@ -6,7 +6,7 @@ import Button from "./components/Button";
 import Avatar from "./images/avatar.png";
 import LinkedIn from "./icons/linkedin.svg";
 import ProjectCard from "./components/ProjectCard";
-import { projects } from "./Projects";
+import { projects } from "./data/Projects";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");

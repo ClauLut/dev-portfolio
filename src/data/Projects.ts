@@ -1,7 +1,8 @@
-import ClutMockup from "./images/clut-dev-mockups.png";
-import WalkydooMockup from "./images/walkydoo-mockups.png";
-import SnapratMockup from "./images/snaprat-mockups.png";
-import MainquestMockup from "./images/mainquest-mockups.png";
+import ClutMockup from "../images/clut-dev-mockups.png";
+import WalkydooMockup from "../images/walkydoo-mockups.png";
+import SnapratMockup from "../images/snaprat-mockups.png";
+import MainquestMockup from "../images/mainquest-mockups.png";
+import FitryMockup from "../images/fitry-mockups.png";
 
 
 export interface IProject {
@@ -25,11 +26,11 @@ export const projects = [
     code: "https://github.com/ClauLut/dev-portfolio",
   },
   {
-    title: "Mainquest App",
+    title: "MainQuest App",
     image: MainquestMockup,
     year: 2026,
-    desc: "Description Coming Soon! ...",
-    tech: "React",
+    desc: "MainQuest is a Progressive Web App designed to enhance the festival experience by helping users connect and coordinate within private groups. Users can plan their schedule by marking favorite acts, track each other’s locations on a live map, and quickly send an emergency alert if needed.",
+    tech: "React, PWA, Java",
     code_collabs: 2,
     role: "Frontend Development & UI/UX Design",
     design:
@@ -37,9 +38,9 @@ export const projects = [
   },
   {
     title: "Fitry App",
-    image: "",
+    image: FitryMockup,
     year: 2023,
-    desc: "",
+    desc: "A fitness-focused web and mobile app, enabling users to create personalized workout plans, track progress, and share achievements within a social community feed.",
     tech: "React, React Native, Firebase",
     code: "https://github.com/ClauLut/fitry",
     code_collabs: 2,

@@ -4,7 +4,7 @@ import { ReactComponent as GitHub } from "../icons/github.svg";
 import { ReactComponent as Figma } from "../icons/figma.svg";
 import { ReactComponent as Role } from "../icons/account.svg";
 import { ReactComponent as Collabs } from "../icons/users.svg";
-import { IProject } from "../Projects";
+import { IProject } from "../data/Projects";
 
 interface IProjectCard {
   index: number;
