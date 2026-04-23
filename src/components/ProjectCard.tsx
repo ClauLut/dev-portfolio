@@ -19,7 +19,7 @@ export default function ProjectCard({ index: i, project: p }: IProjectCard) {
       className="card"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: i * 0.2 }}
+      transition={{ delay: 0.2 }}
     >
       {p.image && <img src={p.image} alt="mockup" width={300} />}
       <div className="content">
