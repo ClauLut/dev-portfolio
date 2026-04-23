@@ -36,7 +36,7 @@ export default function App() {
   };
 
   const sections = useMemo(() => {
-    return ["home", "about", "projects", "contact"];
+    return ["home", "projects", "contact"];
   }, []);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function App() {
     });
 
     return () => observer.disconnect();
-  }, [sections]);
+  }, [sections, activeSection]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({
