@@ -30,7 +30,7 @@ export const projects = [
     image: MainquestMockup,
     year: 2026,
     desc: "MainQuest is a Progressive Web App designed to enhance the festival experience by helping users connect and coordinate within private groups. Users can plan their schedule by marking favorite acts, track each other’s locations on a live map, and quickly send an emergency alert if needed.",
-    tech: "React, PWA, Java",
+    tech: "React, Leaflet, PWA",
     code_collabs: 2,
     role: "Frontend Development & UI/UX Design",
     design:
