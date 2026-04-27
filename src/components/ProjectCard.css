@@ -34,6 +34,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  font-family: inherit;
 }
 
 .content {
@@ -137,4 +138,11 @@
 .collabs-icon {
   width: 16px;
   height: 16px;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+  .card {
+    min-height: 200px;
+  }
 }

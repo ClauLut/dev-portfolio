@@ -1,0 +1,31 @@
+button {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 30px;
+  height: fit-content;
+  background-color: var(--primary);
+  border: none;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 4px;
+  transition: 0.3s;
+  backdrop-filter: blur(10px);
+  color: #2d2a32;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+#secondary {
+  color: #faf7ff;
+  background-color: var(--medium);
+}
+
+#gradient {
+  color: #faf7ff;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}

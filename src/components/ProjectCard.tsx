@@ -7,14 +7,12 @@ import { ReactComponent as Collabs } from "../icons/users.svg";
 import { IProject } from "../data/Projects";
 
 interface IProjectCard {
-  index: number;
   project: IProject;
 }
 
-export default function ProjectCard({ index: i, project: p }: IProjectCard) {
+export default function ProjectCard({ project: p }: IProjectCard) {
   return (
     <motion.div
-      key={i}
       whileHover={{ scale: 1.03 }}
       className="card"
       initial={{ opacity: 0, y: 30 }}

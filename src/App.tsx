@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, Sun, Moon, ArrowUp } from "lucide-react";
 import Button from "./components/Button";
@@ -7,71 +7,61 @@ import Avatar from "./images/avatar.png";
 import LinkedIn from "./icons/linkedin.svg";
 import ProjectCard from "./components/ProjectCard";
 import { projects } from "./data/Projects";
+import SkillGroup from "./components/SkillGroup";
+
+const SECTIONS = ["home", "projects", "contact"];
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState("home");
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "dark";
-  });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [activeSection, setActiveSection] = useState<string>("home");
+  const [theme, setTheme] = useState<"light" | "dark">(
+    () => (localStorage.getItem("theme") as "light" | "dark") || "dark",
+  );
 
+  // Theme handling
   useEffect(() => {
-    const root = document.documentElement;
-
-    root.classList.remove("light");
-
-    if (theme === "light") {
-      root.classList.add("light");
-    }
-
+    document.documentElement.classList.toggle("light", theme === "light");
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = () =>
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
+  // Mail to handling
   const handleMailButtonClick = () => {
     const email = "claudia.lutnik@gmx.at";
     window.location.href = `mailto:${email}`;
   };
 
-  const sections = useMemo(() => {
-    return ["home", "projects", "contact"];
-  }, []);
-
+  // Intersection Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        const visible = entries.find((e) => e.isIntersecting);
+        if (visible) setActiveSection(visible.target.id);
       },
       { threshold: 0.6 },
     );
 
-    sections.forEach((id) => {
+    SECTIONS.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, [sections, activeSection]);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
+  }, []);
 
   return (
     <div className="container">
       {/* HEADER */}
       <div className="header">
         <h1 onClick={() => scrollTo("home")}>
-          {" "}
           clut.<span>dev</span>
         </h1>
         <Button
@@ -98,6 +88,7 @@ export default function App() {
               development and thoughtful design.
             </p>
           </div>
+
           <motion.img
             whileHover={{
               x: [0, -6, 6, -4, 4, 0],
@@ -111,6 +102,7 @@ export default function App() {
             style={{ borderRadius: "150px" }}
           />
         </div>
+
         <div className="navigation">
           <Button onClick={() => scrollTo("projects")} text="View Projects" />
           <Button
@@ -124,7 +116,6 @@ export default function App() {
       {/* ABOUT */}
       <section id="about">
         <h3> About </h3>
-
         <p>
           I’m a frontend developer focused on modern web technologies with a
           strong passion for UI/UX design. I enjoy turning ideas into intuitive,
@@ -149,7 +140,7 @@ export default function App() {
         <h3>Projects </h3>
         <div className="projects">
           {projects.map((project, i) => (
-            <ProjectCard index={i} project={project} />
+            <ProjectCard key={i} project={project} />
           ))}
         </div>
       </section>
@@ -157,41 +148,42 @@ export default function App() {
       {/* SKILLS */}
       <section className="skills">
         <h3>Skills </h3>
-        <h4>Frontend Development</h4>
-        {[
-          "HTML",
-          "CSS",
-          "SASS",
-          "JavaScript",
-          "TypeScript",
-          "React",
-          "API Integration",
-        ].map((skill, i) => (
-          <motion.span key={i} whileHover={{ scale: 1.1 }}>
-            {skill}
-          </motion.span>
-        ))}
-        <h4>UI/UX & Design</h4>
-        {["Figma", "AdobeXD", "Wireframing", "Prototyping", "User Flows"].map(
-          (skill, i) => (
-            <motion.span key={i} whileHover={{ scale: 1.1 }}>
-              {skill}
-            </motion.span>
-          ),
-        )}
-        <h4>Tools & Workflow</h4>
-        {[
-          "Git",
-          "GitHub",
-          "Webpack",
-          "Node.js",
-          "Docker",
-          "AI-Assisted Development",
-        ].map((skill, i) => (
-          <motion.span key={i} whileHover={{ scale: 1.1 }}>
-            {skill}
-          </motion.span>
-        ))}
+        <SkillGroup
+          title="Frontend Development"
+          skills={[
+            "HTML",
+            "CSS",
+            "SASS",
+            "JavaScript",
+            "TypeScript",
+            "React",
+            "API Integration",
+            "Storybook",
+          ]}
+        />
+
+        <SkillGroup
+          title="UI/UX & Design"
+          skills={[
+            "Figma",
+            "AdobeXD",
+            "Wireframing",
+            "Prototyping",
+            "User Flows",
+          ]}
+        />
+
+        <SkillGroup
+          title="Tools & Workflow"
+          skills={[
+            "Git",
+            "GitHub",
+            "Webpack",
+            "Node.js",
+            "Docker",
+            "AI-Assisted Development",
+          ]}
+        />
       </section>
 
       {/* CONTACT */}
@@ -200,7 +192,7 @@ export default function App() {
         className="contact"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
+        transition={{ delay: 0.5 }}
       >
         <h3>Contact </h3>
         <p> Let's work together.</p>
